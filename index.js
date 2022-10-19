@@ -1,10 +1,9 @@
 function playRound() {
-    const playerSelection = playerPlay(window.prompt('Enter your selection'));
-    const computerSelection = computerPlay();
+    let playerSelection = playerPlay(window.prompt('Enter rock, paper or scissors'));
+    let computerSelection = computerPlay();
+    console.log(computerSelection);
     console.log(checkWinner(playerSelection, computerSelection))
 }
-
-
 
 function computerPlay() {
     const random = Math.floor(Math.random() * 3);
@@ -25,8 +24,9 @@ function playerPlay(userInput) {
     userInput = userInput.toLowerCase();
     if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
         return userInput;
-    } else{
-        window.prompt('Type either Rock, Paper or Scissors');     
+    } else {
+        alert("check your spelling");
+        playRound();
     }
 }
 
@@ -35,33 +35,28 @@ function checkWinner(playerSelection, computerSelection) {
    if (playerSelection === computerSelection) {
        return 'This game is a tie';
    };
-   if (playerSelection === 'rock') {
-       if (computerSelection === 'paper') {
+   if (playerSelection === 'rock' && computerSelection === 'paper') {
            return 'You Lose!, Paper covers Rock';
-       }else {
-           return 'You win';
-       }
-   }
-   if (playerSelection === 'paper') {
-       if (computerSelection === 'scissors') {
+       }else if (playerSelection === 'paper' && computerSelection === 'scissors')  {
            return 'You Lose!, Scissors cuts Paper';
-       } else {
-           return 'You win';
+        } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+            return 'You Lose!, Rock crashes Scissors';
        }
-   }
-   if (playerSelection === 'scissors') {
-       if (computerSelection === 'rock') {
-           return 'You Lose!, Rock crashes Scissors';
-       } else{
-           return 'You Win';
-       }
-   }
+    
+    if (playerSelection === 'paper' && computerSelection === 'rock') {
+        return 'You Win! Paper covers Rock';
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        return 'You Win!, Scissors cuts Paper';
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        return 'You Win!, Rock crashes Scissors';
+    }
 }
-game()
 
+game()
 function game() {
     for(let i = 0; i < 5; i++) {
         playRound();
     }
 }
+
 
