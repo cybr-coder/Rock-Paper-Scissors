@@ -1,9 +1,30 @@
+playRound();
+
 function playRound() {
-    let playerSelection = playerPlay(window.prompt('Enter rock, paper or scissors'));
+    let playerSelection = playerPlay(prompt('Enter rock, paper or scissors'));
     let computerSelection = computerPlay();
     console.log(computerSelection);
     console.log(checkWinner(playerSelection, computerSelection))
 }
+
+function restartRound() {
+    let playerReplay = playerPlay(prompt('Enter rock, paper or scissors'));
+    let computerReplay = computerPlay();
+    console.log(computerReplay);
+    console.log(checkWinner(playerReplay, computerReplay));
+}
+
+function playerPlay(userInput) {
+    userInput = userInput.toLowerCase();
+    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+        return userInput;
+    } else {
+        // alert("check your spelling");
+        return 'ERROR'
+    } 
+    restartRound();
+}
+
 
 function computerPlay() {
     const random = Math.floor(Math.random() * 3);
@@ -17,16 +38,6 @@ function computerPlay() {
         case 2:
             return 'scissors';
             break;
-    }
-}
-
-function playerPlay(userInput) {
-    userInput = userInput.toLowerCase();
-    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-        return userInput;
-    } else {
-        alert("check your spelling");
-        playRound();
     }
 }
 
@@ -52,7 +63,7 @@ function checkWinner(playerSelection, computerSelection) {
     }
 }
 
-game()
+// game()
 function game() {
     for(let i = 0; i < 5; i++) {
         playRound();
