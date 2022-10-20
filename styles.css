@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.select-el {
+    height: 25px;
+    margin-top: 15px;
+}
+
+.scores {
+    height: 25px;
+}
+
+.points-container {
+    height: 100px;
+}
